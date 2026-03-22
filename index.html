@@ -183,61 +183,16 @@
       }
 
       .brand-mark {
-        position: relative;
-        width: 2.95rem;
+        width: 2.45rem;
         height: 2.45rem;
         border-radius: 0.9rem;
         background:
-          linear-gradient(145deg, #14667c, var(--primary-strong)),
+          linear-gradient(135deg, var(--primary), #197188),
           var(--primary);
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
+        color: #ffffff;
+        display: grid;
+        place-items: center;
         box-shadow: var(--shadow-soft);
-        overflow: hidden;
-      }
-
-      .brand-mark::before,
-      .brand-mark::after {
-        content: "";
-        position: absolute;
-        border-radius: 999px;
-        background: #ffffff;
-      }
-
-      .brand-mark::before {
-        width: 1.45rem;
-        height: 0.38rem;
-        top: 0.68rem;
-        left: 0.52rem;
-      }
-
-      .brand-mark::after {
-        width: 1.45rem;
-        height: 0.38rem;
-        right: 0.52rem;
-        bottom: 0.62rem;
-      }
-
-      .brand-mark-dot {
-        position: absolute;
-        right: 0.44rem;
-        bottom: 0.35rem;
-        width: 0.46rem;
-        height: 0.46rem;
-        border-radius: 50%;
-        background: var(--accent);
-      }
-
-      .brand-mark-curve {
-        width: 1.75rem;
-        height: 1.45rem;
-        border: 0.28rem solid #ffffff;
-        border-top-color: transparent;
-        border-bottom-color: transparent;
-        border-radius: 999px;
-        transform: rotate(33deg);
-        opacity: 0.96;
       }
 
       .nav {
@@ -895,10 +850,7 @@
     <header class="site-header">
       <div class="container header-inner">
         <a class="brand" href="#inicio" aria-label="Ir al inicio">
-          <span class="brand-mark" aria-hidden="true">
-            <span class="brand-mark-curve"></span>
-            <span class="brand-mark-dot"></span>
-          </span>
+          <span class="brand-mark">S</span>
           <span>Sasogu Apps</span>
         </a>
         <nav class="nav" aria-label="Principal">
@@ -1318,10 +1270,7 @@
       <div class="container footer-grid">
         <div>
           <a class="brand" href="#inicio">
-            <span class="brand-mark" aria-hidden="true">
-              <span class="brand-mark-curve"></span>
-              <span class="brand-mark-dot"></span>
-            </span>
+            <span class="brand-mark">S</span>
             <span>Sasogu Apps</span>
           </a>
           <p class="footer-note" style="margin-top: 1rem;">
