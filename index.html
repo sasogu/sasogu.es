@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Sasogu Apps crea aplicaciones a medida para pequeños negocios. Soluciones simples para problemas reales."
+      content="Apps de reservas y gestion para centros de belleza, peluquerias, barberias y estetica. Una app propia para tu negocio, con acompanamiento continuo."
     />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <title>Sasogu Apps | Apps a medida para tu negocio</title>
+    <title>Sasogu Apps | App propia para negocios de belleza</title>
     <style>
       :root {
         --bg: #f4f8f9;
@@ -422,7 +422,6 @@
         color: var(--primary-strong);
       }
 
-      .benefits-grid,
       .problem-grid,
       .services-grid,
       .testimonials-grid,
@@ -453,7 +452,6 @@
       .services-grid .card,
       .testimonial,
       .step,
-      .pricing-box,
       .cta-box,
       .contact-box {
         background: var(--surface);
@@ -474,7 +472,6 @@
       }
 
       .services-grid .card p:last-child,
-      .benefits-grid .card p:last-child,
       .testimonial p:last-child {
         margin-bottom: 0;
       }
@@ -561,26 +558,6 @@
         margin-top: 0.05rem;
       }
 
-      .pricing-layout {
-        display: grid;
-        gap: 1.25rem;
-        align-items: center;
-      }
-
-      .pricing-aside {
-        padding: 1.4rem;
-        border-radius: 22px;
-        background: rgba(255, 255, 255, 0.8);
-        border: 1px solid rgba(14, 79, 97, 0.08);
-      }
-
-      .pricing-aside strong {
-        display: block;
-        margin-bottom: 0.5rem;
-        color: var(--primary-strong);
-      }
-
-      .pricing-box,
       .cta-box,
       .contact-box {
         border-radius: 28px;
@@ -588,38 +565,98 @@
         box-shadow: var(--shadow);
       }
 
-      .pricing-box {
-        padding: 2rem;
-        background:
-          linear-gradient(135deg, rgba(14, 79, 97, 0.04), rgba(242, 140, 56, 0.06)),
-          #ffffff;
+      .plans-grid,
+      .coverage-grid {
+        display: grid;
+        gap: 1rem;
       }
 
-      .price {
-        font-size: clamp(2.6rem, 6vw, 4rem);
-        color: var(--primary-strong);
-        margin: 0.4rem 0 1rem;
+      .plan-card {
+        position: relative;
+        padding: 1.6rem;
+        border-radius: 24px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .plan-card.featured {
+        background:
+          linear-gradient(180deg, rgba(242, 140, 56, 0.08), rgba(255, 255, 255, 0.98));
+        border-color: rgba(242, 140, 56, 0.28);
+      }
+
+      .plan-tag {
+        display: inline-flex;
+        padding: 0.35rem 0.7rem;
+        margin-bottom: 1rem;
+        border-radius: 999px;
+        background: rgba(14, 79, 97, 0.08);
+        color: var(--primary);
+        font-size: 0.82rem;
         font-weight: 800;
       }
 
-      .pricing-features {
-        display: grid;
-        gap: 0.8rem;
-        margin: 1.5rem 0 1.8rem;
+      .plan-card.featured .plan-tag {
+        background: rgba(242, 140, 56, 0.14);
+        color: #a35518;
       }
 
-      .pricing-features span {
-        display: flex;
+      .plan-price {
+        margin: 1rem 0 0.3rem;
+        color: var(--primary-strong);
+        font-size: 2rem;
+        font-weight: 800;
+        line-height: 1;
+      }
+
+      .plan-price-old {
+        margin: 1rem 0 0.35rem;
+        color: var(--text-muted);
+        font-size: 1rem;
+        font-weight: 700;
+        text-decoration: line-through;
+      }
+
+      .plan-offer {
+        display: inline-flex;
         align-items: center;
+        padding: 0.35rem 0.7rem;
+        margin-bottom: 0.7rem;
+        border-radius: 999px;
+        background: rgba(242, 140, 56, 0.14);
+        color: #a35518;
+        font-size: 0.8rem;
+        font-weight: 800;
+      }
+
+      .plan-monthly {
+        margin: 0 0 1rem;
+        color: var(--text-muted);
+        font-weight: 700;
+      }
+
+      .plan-features,
+      .coverage-list {
+        display: grid;
+        gap: 0.75rem;
+        margin-top: 1.2rem;
+      }
+
+      .plan-features span,
+      .coverage-list span {
+        display: flex;
+        align-items: flex-start;
         gap: 0.7rem;
         color: var(--primary-strong);
         font-weight: 600;
       }
 
-      .pricing-features span::before {
+      .plan-features span::before,
+      .coverage-list span::before {
         content: "•";
         color: var(--accent);
-        font-size: 1.4rem;
+        font-size: 1.2rem;
         line-height: 1;
       }
 
@@ -775,10 +812,11 @@
           padding: 5.5rem 0;
         }
 
-        .benefits-grid,
         .problem-grid,
         .services-grid,
-        .testimonials-grid {
+        .testimonials-grid,
+        .plans-grid,
+        .coverage-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
@@ -821,20 +859,16 @@
           grid-template-columns: 1.1fr 0.9fr;
         }
 
-        .pricing-layout {
-          grid-template-columns: 1.15fr 0.85fr;
-        }
-
-        .benefits-grid {
-          grid-template-columns: repeat(4, minmax(0, 1fr));
-        }
-
         .services-grid {
           grid-template-columns: repeat(4, minmax(0, 1fr));
         }
 
         .problem-grid {
           grid-template-columns: 1.1fr 0.9fr;
+        }
+
+        .plans-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
         }
       }
 
@@ -855,9 +889,9 @@
         </a>
         <nav class="nav" aria-label="Principal">
           <a href="#inicio">Inicio</a>
-          <a href="#servicios">Servicios</a>
+          <a href="#servicios">La app</a>
           <a href="#como-funciona">Cómo funciona</a>
-          <a href="#precio">Precio</a>
+          <a href="#precio">Planes</a>
           <a href="#contacto">Contacto</a>
         </nav>
         <a class="btn header-cta" href="#contacto">Solicitar demo</a>
@@ -869,34 +903,34 @@
       <section class="hero" id="inicio">
         <div class="container hero-shell hero-grid">
           <div class="hero-copy">
-            <span class="eyebrow">Soluciones simples para problemas reales</span>
-            <h1>Apps a medida para tu negocio</h1>
+            <span class="eyebrow">App propia para negocios de belleza</span>
+            <h1>Reservas y gestión en una app adaptada a tu negocio</h1>
             <p>
-              Creamos soluciones simples que te ahorran tiempo y organizan tu trabajo.
-              Si tienes un pequeño negocio, te ayudamos a dejar atrás hojas sueltas,
-              mensajes perdidos y tareas repetitivas.
+              Desarrollo apps para centros de uñas, peluquerías, barberías, estética y
+              negocios de bienestar que trabajan con cita previa y quieren ofrecer una
+              experiencia más cómoda y profesional.
             </p>
             <p>
-              Deja de perder tiempo con procesos manuales y empieza a organizar tu
-              negocio de forma sencilla con tecnología simple que funciona.
+              No es una plataforma genérica para todos. Cada cliente recibe una app
+              adaptada a su imagen, sus servicios y su forma de trabajar.
             </p>
             <div class="hero-actions">
               <a class="btn" href="#contacto">Solicitar demo</a>
-              <a class="btn-secondary" href="#como-funciona">Ver cómo funciona</a>
+              <a class="btn-secondary" href="#precio">Ver planes</a>
             </div>
             <div class="hero-points">
-              <span>Menos tareas repetitivas y más control del día a día</span>
-              <span>Apps claras, prácticas y pensadas para negocios pequeños</span>
-              <span>Implementación cercana, sin tecnicismos ni complicaciones</span>
+              <span>Reservas online y organización diaria en un solo lugar</span>
+              <span>Una propuesta clara y fácil de entender</span>
+              <span>Acompañamiento continuo para que la app evolucione contigo</span>
             </div>
             <div class="hero-trust" aria-label="Puntos clave del servicio">
-              <span><strong>Simple</strong> Herramientas fáciles de usar desde el primer día</span>
-              <span><strong>Útil</strong> Cada función responde a una necesidad real</span>
-              <span><strong>Cercano</strong> Comunicación clara y enfoque práctico</span>
+              <span><strong>Propia</strong> La app se adapta a tu marca y a tu negocio</span>
+              <span><strong>Fiable</strong> Solución pensada para funcionar con claridad y continuidad</span>
+              <span><strong>Clara</strong> Oferta simple, trato cercano y continuidad</span>
             </div>
             <div class="mini-proof" aria-label="Mensajes de confianza">
-              <span>Ideal para negocios que quieren ordenar sin complicarse</span>
-              <span>Implementación clara, rápida y centrada en resultados</span>
+              <span>Ideal para negocios con cita previa que quieren trabajar mejor</span>
+              <span>Posicionada como una app propia, no como un software genérico barato</span>
             </div>
           </div>
 
@@ -913,28 +947,28 @@
                 </div>
                 <div class="mockup-layout">
                   <div class="mockup-main">
-                    <strong>Negocio organizado en un solo lugar</strong>
+                    <strong>Tu centro organizado desde una sola app</strong>
                     <p>
-                      Reservas, clientes, tareas y avisos reunidos en una app clara y
-                      fácil de usar.
+                      Citas, equipo y clientes reunidos en una herramienta clara,
+                      pensada para tu día a día.
                     </p>
                   </div>
                   <div class="mockup-metrics">
                     <div class="metric">
-                      <span>Reservas</span>
-                      <strong>+32%</strong>
+                      <span>Reservas online</span>
+                      <strong>Activas</strong>
                     </div>
                     <div class="metric">
-                      <span>Tareas manuales</span>
-                      <strong>-18 h</strong>
+                      <span>Agenda</span>
+                      <strong>Más orden</strong>
                     </div>
                     <div class="metric">
-                      <span>Clientes atendidos</span>
-                      <strong>Más rápido</strong>
+                      <span>Clientes</span>
+                      <strong>Mejor seguimiento</strong>
                     </div>
                     <div class="metric">
-                      <span>Equipo</span>
-                      <strong>Mejor coordinado</strong>
+                      <span>Marca</span>
+                      <strong>Personalizada</strong>
                     </div>
                   </div>
                 </div>
@@ -949,79 +983,31 @@
         <div class="container">
           <div class="problem-grid">
             <div class="problem-card">
-              <span class="eyebrow">Pensado para vender</span>
-              <h2 id="problemas-titulo">Tu negocio no necesita más complejidad</h2>
+              <span class="eyebrow">Enfoque</span>
+              <h2 id="problemas-titulo">Tu negocio no necesita otra app genérica</h2>
               <p>
-                Necesita una herramienta clara para dejar de improvisar, responder más
-                rápido y tener el trabajo mejor organizado.
+                Necesita una app propia de reservas y gestión, adaptada a cómo trabajas
+                y pensada para vender mejor tu servicio sin añadir complejidad.
               </p>
               <div class="problem-list">
-                <span>Menos mensajes sueltos y menos tareas repetidas</span>
-                <span>Más control sobre reservas, clientes o procesos internos</span>
-                <span>Una forma más simple de trabajar y atender mejor</span>
+                <span>Menos mensajes sueltos y más control de citas y clientes</span>
+                <span>Una identidad propia para tu centro, peluquería o barbería</span>
+                <span>Un enfoque práctico que evita complejidad innecesaria</span>
               </div>
             </div>
             <div class="problem-card">
-              <span class="eyebrow">Lo que cambia</span>
-              <h3>De procesos manuales a una operativa más limpia</h3>
+              <span class="eyebrow">Para quién encaja</span>
+              <h3>Especialmente útil para negocios de belleza con cita previa</h3>
               <p>
-                Cuando la información está ordenada y los pasos importantes están
-                automatizados, tu negocio gana tiempo y transmite más profesionalidad.
+                Esta propuesta encaja especialmente bien en negocios de belleza que
+                quieren una app útil, profesional y fácil de incorporar a su día a día.
               </p>
               <div class="problem-list">
-                <span>Evitas errores y olvidos en el día a día</span>
-                <span>Tu equipo sabe qué hacer y cuándo hacerlo</span>
-                <span>El cliente nota una atención más rápida y clara</span>
+                <span>Centros de uñas, estética, peluquerías y barberías</span>
+                <span>Negocios de masajes, bienestar o servicios similares</span>
+                <span>Equipos que quieren reservas online y gestión interna unificada</span>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Beneficios principales -->
-      <section class="section" aria-labelledby="beneficios-titulo">
-        <div class="container">
-          <div class="section-header">
-            <span class="eyebrow">Beneficios claros</span>
-            <h2 id="beneficios-titulo">Tecnología simple que funciona</h2>
-            <p>
-              Diseñamos apps prácticas para resolver necesidades reales y mejorar el
-              día a día de tu negocio sin añadir complejidad.
-            </p>
-          </div>
-          <div class="benefits-grid">
-            <article class="card">
-              <div class="icon-box">🗂️</div>
-              <h3>Más organización</h3>
-              <p>
-                Centraliza tareas, citas, clientes o pedidos en una sola herramienta
-                fácil de consultar.
-              </p>
-            </article>
-            <article class="card">
-              <div class="icon-box">⏱️</div>
-              <h3>Menos trabajo manual</h3>
-              <p>
-                Automatiza avisos, registros y procesos repetitivos para ganar tiempo
-                y reducir errores.
-              </p>
-            </article>
-            <article class="card">
-              <div class="icon-box">🤝</div>
-              <h3>Mejor atención al cliente</h3>
-              <p>
-                Responde antes, organiza mejor tus citas y ofrece una experiencia más
-                cómoda a cada cliente.
-              </p>
-            </article>
-            <article class="card">
-              <div class="icon-box">🛠️</div>
-              <h3>Soluciones adaptadas a ti</h3>
-              <p>
-                Cada app se ajusta a tu forma de trabajar para que encaje de verdad
-                con tu negocio.
-              </p>
-            </article>
           </div>
         </div>
       </section>
@@ -1030,40 +1016,40 @@
       <section class="section" id="servicios" aria-labelledby="servicios-titulo">
         <div class="container">
           <div class="section-header">
-            <span class="eyebrow">Servicios</span>
-            <h2 id="servicios-titulo">Apps pensadas para negocios pequeños</h2>
+            <span class="eyebrow">Qué puede incluir</span>
+            <h2 id="servicios-titulo">Lo que tu app puede incluir</h2>
             <p>
-              No vendemos funciones innecesarias. Creamos herramientas útiles que
-              resuelven problemas concretos de forma clara y rentable.
+              Cada negocio es distinto, pero estas son las funciones que mejor suelen
+              encajar en centros de belleza y servicios con cita previa.
             </p>
           </div>
           <div class="services-grid">
             <article class="card">
-              <h3>Apps de reservas</h3>
+              <h3>Reservas online</h3>
               <p>
-                Para peluquerías, talleres, consultas o servicios locales que necesitan
-                ordenar citas y evitar mensajes cruzados.
+                Tus clientes pueden pedir cita con una experiencia clara, alineada con
+                tu marca y tus servicios.
               </p>
             </article>
             <article class="card">
-              <h3>Apps para gestión interna</h3>
+              <h3>Agenda para el equipo</h3>
               <p>
-                Controla tareas, estados, incidencias o seguimientos desde un solo
-                panel fácil de usar.
+                Organiza horarios, cambios de cita y servicios desde una herramienta
+                sencilla y fácil de consultar.
               </p>
             </article>
             <article class="card">
-              <h3>Automatización de tareas</h3>
+              <h3>Gestión de clientes</h3>
               <p>
-                Reduce pasos manuales con recordatorios, avisos y flujos simples que
-                hacen el trabajo más ágil.
+                Reúne la información importante de cada cliente para ofrecer una
+                atención más cuidada y ordenada.
               </p>
             </article>
             <article class="card">
-              <h3>Soluciones personalizadas</h3>
+              <h3>Experiencia de marca adaptada</h3>
               <p>
-                Si tu negocio tiene una necesidad específica, diseñamos una app a
-                medida para cubrirla sin complicaciones.
+                Nombre, imagen y estilo visual se ajustan para que la app se perciba
+                como algo propio de tu negocio.
               </p>
             </article>
           </div>
@@ -1075,35 +1061,35 @@
         <div class="container">
           <div class="section-header">
             <span class="eyebrow">Cómo funciona</span>
-            <h2 id="proceso-titulo">Un proceso claro desde el primer día</h2>
+            <h2 id="proceso-titulo">Un proceso claro para lanzar tu app con confianza</h2>
             <p>
-              Trabajamos con un enfoque simple para que sepas qué se va a hacer, cuánto
-              te puede ayudar y cómo empezar a usarlo cuanto antes.
+              Todo el proceso está planteado para que tengas claridad desde el inicio y
+              sepas qué esperar en cada paso.
             </p>
           </div>
           <div class="steps">
             <article class="step">
               <span class="step-number">1</span>
-              <h3>Analizamos tu necesidad</h3>
+              <h3>Definimos lo que necesita tu negocio</h3>
               <p>
-                Escuchamos cómo trabajas, detectamos los cuellos de botella y definimos
-                qué solución encaja mejor contigo.
+                Revisamos cómo trabajas, qué servicios ofreces y qué experiencia quieres
+                dar a tus clientes para enfocar bien la propuesta.
               </p>
             </article>
             <article class="step">
               <span class="step-number">2</span>
-              <h3>Creamos tu app</h3>
+              <h3>Damos forma a tu app</h3>
               <p>
-                Diseñamos una herramienta simple, útil y adaptada a tu negocio, sin
-                añadir funciones que no necesitas.
+                Ajustamos imagen, textos y servicios para que todo encaje con tu negocio
+                y con la forma en la que quieres presentarte.
               </p>
             </article>
             <article class="step">
               <span class="step-number">3</span>
-              <h3>La usas sin complicaciones</h3>
+              <h3>La ponemos en marcha contigo</h3>
               <p>
-                La app queda lista para trabajar mejor desde el primer día, con una
-                experiencia clara y cercana.
+                La app queda lista para empezar a usarse y seguir creciendo con el
+                tiempo según lo que necesite tu negocio.
               </p>
             </article>
           </div>
@@ -1113,69 +1099,86 @@
       <!-- Bloque de precios -->
       <section class="section" id="precio" aria-labelledby="precio-titulo">
         <div class="container">
-          <div class="pricing-box">
-            <div class="pricing-layout">
-              <div>
-                <span class="eyebrow">Precio</span>
-                <h2 id="precio-titulo">Empieza con una solución clara y asumible</h2>
-                <p class="price">Desde 20 € al mes</p>
-                <p>
-                  Sin complicaciones, con configuración incluida y una propuesta
-                  pensada para que un pequeño negocio pueda empezar sin fricciones.
-                </p>
-                <div class="pricing-features">
-                  <span>Sin complicaciones</span>
-                  <span>Configuración incluida</span>
-                  <span>Orientado a necesidades reales</span>
-                </div>
-                <a class="btn" href="#contacto">Quiero información</a>
+          <div class="section-header">
+            <span class="eyebrow">Planes</span>
+            <h2 id="precio-titulo">Una inversión inicial y una cuota mensual clara</h2>
+            <p>
+              La propuesta combina un pago inicial con una cuota mensual
+              para acompañarte y mantener la app al día.
+            </p>
+          </div>
+          <div class="plans-grid">
+            <article class="plan-card">
+              <span class="plan-tag">Plan Base</span>
+              <h3>Para empezar con una opción clara y funcional</h3>
+              <span class="plan-offer">Oferta especial</span>
+              <p class="plan-price-old">690 €</p>
+              <p class="plan-price">490 €</p>
+              <p class="plan-monthly">49 €/mes</p>
+              <div class="plan-features">
+                <span>App preparada para tu negocio</span>
+                <span>Nombre, logo y colores adaptados</span>
+                <span>Servicios y horarios listos para empezar</span>
+                <span>Datos de contacto y acompañamiento básico</span>
               </div>
-              <aside class="pricing-aside">
-                <strong>Ideal si buscas:</strong>
-                <p>
-                  Una app útil, fácil de entender y lista para ayudarte a organizar
-                  mejor el trabajo sin invertir en herramientas innecesarias.
-                </p>
-                <strong>Qué incluye:</strong>
-                <p>
-                  Revisión inicial, planteamiento de solución, configuración incluida y
-                  una propuesta adaptada a tu caso.
-                </p>
-              </aside>
-            </div>
+            </article>
+            <article class="plan-card featured">
+              <span class="plan-tag">Plan recomendado</span>
+              <h3>Más detalle en la personalización y mejor acompañamiento</h3>
+              <p class="plan-price">1.190 €</p>
+              <p class="plan-monthly">79 €/mes</p>
+              <div class="plan-features">
+                <span>Todo lo incluido en la opción inicial</span>
+                <span>Mayor personalización visual y de contenidos</span>
+                <span>Ajustes para que la experiencia encaje mejor con tu negocio</span>
+                <span>Acompañamiento al empezar y pequeños ajustes</span>
+              </div>
+            </article>
+            <article class="plan-card">
+              <span class="plan-tag">Plan Premium</span>
+              <h3>Para negocios que quieren atención prioritaria y una evolución más cercana</h3>
+              <p class="plan-price">1.790 €</p>
+              <p class="plan-monthly">129 €/mes</p>
+              <div class="plan-features">
+                <span>Todo lo anterior</span>
+                <span>Atención prioritaria</span>
+                <span>Más margen para adaptar la experiencia</span>
+                <span>Mejoras continuas y mayor acompañamiento</span>
+              </div>
+            </article>
           </div>
         </div>
       </section>
 
-      <!-- Testimonios simulados -->
+      <!-- Cobertura del servicio -->
       <section class="section" aria-labelledby="testimonios-titulo">
         <div class="container">
           <div class="section-header">
-            <span class="eyebrow">Testimonios</span>
-            <h2 id="testimonios-titulo">Resultados que se notan en el día a día</h2>
+            <span class="eyebrow">Qué entra</span>
+            <h2 id="testimonios-titulo">Lo que está incluido y lo que se valora aparte</h2>
             <p>
-              Cuando una herramienta es clara, el equipo trabaja mejor y el cliente lo
-              nota rápido.
+              Así tendrás claro desde el principio qué forma parte del servicio y qué
+              se plantearía como un trabajo adicional.
             </p>
           </div>
-          <div class="testimonials-grid">
-            <article class="testimonial">
-              <p>
-                “Antes gestionábamos las reservas por teléfono y WhatsApp. Ahora lo
-                tenemos todo mucho más ordenado y hemos reducido errores casi desde la
-                primera semana.”
-              </p>
-              <strong>Marta López</strong>
-              <small>Centro de estética local</small>
+          <div class="coverage-grid">
+            <article class="card">
+              <h3>Incluido en la cuota mensual</h3>
+              <div class="coverage-list">
+                <span>Revisión continua de la app</span>
+                <span>Resolución de pequeños problemas</span>
+                <span>Pequeñas mejoras y atención básica</span>
+                <span>Seguimiento para que todo funcione con normalidad</span>
+              </div>
             </article>
-            <article class="testimonial">
-              <p>
-                “Necesitábamos algo sencillo para organizar tareas internas. La app es
-                fácil de usar y nos ayuda a atender mejor a los clientes sin perder
-                tiempo.”
-              </p>
-              <strong>David Romero</strong>
-              <small>Taller de reparación</small>
+            <article class="card">
+              <h3>Se valora aparte</h3>
+              <div class="coverage-list">
+                <span>Nuevas funciones o integraciones especiales</span>
+                <span>Rediseños importantes</span>
+                <span>Cambios grandes en la app</span>
+                <span>Acciones de marketing o publicidad</span>
+              </div>
             </article>
           </div>
         </div>
@@ -1185,11 +1188,11 @@
       <section class="section" aria-labelledby="cta-titulo">
         <div class="container">
           <div class="cta-box">
-            <span class="eyebrow">Empieza hoy</span>
-            <h2 id="cta-titulo">Empieza a simplificar tu negocio hoy</h2>
+            <span class="eyebrow">La idea central</span>
+            <h2 id="cta-titulo">Tu propia app de reservas y gestión, adaptada a tu negocio</h2>
             <p>
-              Si quieres organizar mejor tu trabajo y dejar atrás procesos manuales,
-              podemos preparar una solución clara para tu negocio.
+              Una propuesta pensada para diferenciarte de herramientas genéricas y
+              presentar algo más cuidado, más propio y con más valor para tu negocio.
             </p>
             <a class="btn" href="#contacto">Solicitar demo</a>
           </div>
@@ -1201,15 +1204,15 @@
         <div class="container contact-wrap">
           <div class="contact-intro">
             <span class="eyebrow">Contacto</span>
-            <h2 id="contacto-titulo">Cuéntanos qué necesita tu negocio</h2>
+            <h2 id="contacto-titulo">Pide una propuesta para tu centro o negocio de belleza</h2>
             <p>
-              Escríbenos y te orientamos con una propuesta simple, clara y pensada para
-              ayudarte a trabajar mejor.
+              Si quieres una app propia con reservas online y una organización más
+              clara para tu negocio, te preparo una propuesta a medida.
             </p>
             <div class="contact-list">
-              <span>Deja de perder tiempo con procesos manuales</span>
-              <span>Organiza tu negocio de forma sencilla</span>
-              <span>Recibe una propuesta sin tecnicismos</span>
+              <span>Cuéntame qué tipo de negocio tienes</span>
+              <span>Te orientaré sobre el plan que mejor encaja</span>
+              <span>Recibirás una propuesta clara y sin tecnicismos</span>
             </div>
           </div>
           <div class="contact-box">
@@ -1257,7 +1260,7 @@
               <button class="btn" type="submit">Enviar por WhatsApp</button>
               <p class="whatsapp-note">Se abrirá WhatsApp con tu mensaje preparado</p>
               <p class="form-note">
-                Te responderemos con una propuesta clara y sin compromiso.
+                Te responderemos con una propuesta clara, personalizada y sin compromiso.
               </p>
             </form>
           </div>
@@ -1274,23 +1277,23 @@
             <span>Sasogu Apps</span>
           </a>
           <p class="footer-note" style="margin-top: 1rem;">
-            Apps a medida para tu negocio. Soluciones simples para problemas reales.
+            Apps de reservas y gestión para negocios de belleza que quieren una app propia.
           </p>
         </div>
         <div>
           <h3>Enlaces</h3>
           <div class="footer-links">
             <a href="#inicio">Inicio</a>
-            <a href="#servicios">Servicios</a>
-            <a href="#precio">Precio</a>
+            <a href="#servicios">La app</a>
+            <a href="#precio">Planes</a>
             <a href="#contacto">Contacto</a>
           </div>
         </div>
         <div>
           <h3>Mensaje</h3>
           <p class="footer-note">
-            Tecnología clara, rápida y útil para pequeños negocios que quieren avanzar
-            sin complicarse.
+            Una propuesta clara para negocios que quieren una app propia, cuidada y
+            pensada para su día a día.
           </p>
         </div>
       </div>
@@ -1333,7 +1336,7 @@
           "Hola, soy " + nombre + ".",
           "Mi negocio es: " + negocio + ".",
           "Mi teléfono o WhatsApp es: " + telefono + ".",
-          "Quiero información sobre una app a medida para mi negocio."
+          "Quiero información sobre una app de reservas y gestion para mi negocio."
         ].join("\n");
 
         var url =
